@@ -1,4 +1,8 @@
-package com.github.dinomarlir.l10nadventure;
+package com.github.dinomarlir.l10nadventure.storage;
+
+import com.github.dinomarlir.l10nadventure.file.LanguageFile;
+import com.github.dinomarlir.l10nadventure.file.LanguageFileFactory;
+import com.github.dinomarlir.l10nadventure.file.PropertiesLanguageFile;
 
 import java.io.InputStream;
 import java.net.JarURLConnection;
@@ -25,6 +29,7 @@ public final class ResourceBundleTranslationStorage implements TranslationStorag
 
     private final String path;
     private final String prefix;
+    private final LanguageFileFactory languageFileFactory;
     private final ClassLoader classLoader;
     private final Set<String> availableLanguages;
 
@@ -35,7 +40,34 @@ public final class ResourceBundleTranslationStorage implements TranslationStorag
      * @param prefix the file prefix, for example {@code messages_}
      */
     public ResourceBundleTranslationStorage(final String path, final String prefix) {
-        this(path, prefix, Thread.currentThread().getContextClassLoader());
+        this(path, prefix, PropertiesLanguageFile.factory());
+    }
+
+    /**
+     * Creates a storage backed by classpath resources.
+     *
+     * @param path the resource path, for example {@code l10n}
+     * @param prefix the file prefix, for example {@code messages_}
+     * @param languageFileFactory the factory used to create {@link LanguageFile} implementations
+     */
+    public ResourceBundleTranslationStorage(final String path, final String prefix, final LanguageFileFactory languageFileFactory) {
+        this(path, prefix, languageFileFactory, Thread.currentThread().getContextClassLoader());
+    }
+
+    /**
+     * Creates a storage backed by classpath resources.
+     *
+     * @param path the resource path, for example {@code l10n}
+     * @param prefix the file prefix, for example {@code messages_}
+     * @param languageFileFactory the factory used to create {@link LanguageFile} implementations
+     * @param classLoader the class loader used to resolve bundles
+     */
+    public ResourceBundleTranslationStorage(final String path, final String prefix, final LanguageFileFactory languageFileFactory, final ClassLoader classLoader) {
+        this.path = normalizePath(path);
+        this.prefix = normalizePrefix(prefix);
+        this.languageFileFactory = Objects.requireNonNull(languageFileFactory, "languageFileFactory");
+        this.classLoader = Objects.requireNonNull(classLoader, "classLoader");
+        this.availableLanguages = Collections.unmodifiableSet(discoverLanguages());
     }
 
     /**
@@ -46,10 +78,7 @@ public final class ResourceBundleTranslationStorage implements TranslationStorag
      * @param classLoader the class loader used to resolve bundles
      */
     public ResourceBundleTranslationStorage(final String path, final String prefix, final ClassLoader classLoader) {
-        this.path = normalizePath(path);
-        this.prefix = normalizePrefix(prefix);
-        this.classLoader = Objects.requireNonNull(classLoader, "classLoader");
-        this.availableLanguages = Collections.unmodifiableSet(discoverLanguages());
+        this(path, prefix, PropertiesLanguageFile.factory(), classLoader);
     }
 
     /** {@inheritDoc} */
@@ -72,7 +101,7 @@ public final class ResourceBundleTranslationStorage implements TranslationStorag
         }
 
         try (inputStream) {
-            return Optional.of(PropertiesLanguageFile.from(language, inputStream));
+            return Optional.of(this.languageFileFactory.from(language, inputStream));
         } catch (final Exception exception) {
             return Optional.empty();
         }

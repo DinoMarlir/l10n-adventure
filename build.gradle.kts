@@ -1,10 +1,16 @@
 plugins {
     id("java")
     id("java-library")
+    id("maven-publish")
 }
 
 group = "com.github.dinomarlir"
 version = "1.0-SNAPSHOT"
+
+java {
+    withSourcesJar()
+    withJavadocJar()
+}
 
 dependencies {
     api(libs.adventure.api)
@@ -18,4 +24,17 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("mavenJava") {
+            from(components["java"])
+
+            pom {
+                name.set("l10n-adventure")
+                description.set("A small, platform-independent localization / i18n library for Minecraft-based applications.")
+            }
+        }
+    }
 }

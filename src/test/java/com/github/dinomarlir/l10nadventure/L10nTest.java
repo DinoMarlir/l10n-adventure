@@ -2,7 +2,13 @@ package com.github.dinomarlir.l10nadventure;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+import com.github.dinomarlir.l10nadventure.file.LanguageFileFactories;
 import java.util.Set;
+
+import com.github.dinomarlir.l10nadventure.file.LanguageFile;
+import com.github.dinomarlir.l10nadventure.file.PropertiesLanguageFile;
+import com.github.dinomarlir.l10nadventure.storage.ResourceBundleTranslationStorage;
+import com.github.dinomarlir.l10nadventure.storage.TranslationStorage;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.junit.jupiter.api.Test;
@@ -51,6 +57,30 @@ class L10nTest {
 
         final L10n l10n = new L10n(storage, "en_US");
         assertEquals("Hello", l10n.raw("de_DE", "greeting"));
+    }
+
+    @Test
+    void canUseACustomLanguageFileImplementation() {
+        final ResourceBundleTranslationStorage storage = new ResourceBundleTranslationStorage(
+            "l10n",
+            "messages_",
+            LanguageFileFactories.of((language, inputStream) -> new LanguageFile() {
+                @Override
+                public String language() {
+                    return language;
+                }
+
+                @Override
+                public java.util.Map<String, String> values() {
+                    return java.util.Map.of("greeting", "Hi, <name>!");
+                }
+            })
+        );
+
+        final L10n l10n = new L10n(storage, "en_US");
+        assertEquals("Hi, Kezz!", MiniMessage.miniMessage().serialize(
+            l10n.translate("greeting", Argument.component("name", Component.text("Kezz")))
+        ));
     }
 }
 

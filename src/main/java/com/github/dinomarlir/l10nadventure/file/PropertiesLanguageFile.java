@@ -1,4 +1,4 @@
-package com.github.dinomarlir.l10nadventure;
+package com.github.dinomarlir.l10nadventure.file;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -9,13 +9,12 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Properties;
-import java.util.ResourceBundle;
 
 /**
  * Language file backed by a {@code .properties} file.
  *
  * <p>The contained values are copied into an immutable map so the instance can be safely shared.
- * This class can be created from readers, streams or resource bundles.</p>
+ * This class can be created from readers or streams.</p>
  */
 public final class PropertiesLanguageFile implements LanguageFile {
 
@@ -68,18 +67,13 @@ public final class PropertiesLanguageFile implements LanguageFile {
     }
 
     /**
-     * Loads a language file from a resource bundle.
+     * Returns a factory that parses {@code .properties} files into {@link PropertiesLanguageFile}
+     * instances.
      *
-     * @param language the language code
-     * @param bundle the resource bundle to convert
-     * @return the loaded language file
+     * @return the factory for properties language files
      */
-    public static PropertiesLanguageFile from(final String language, final ResourceBundle bundle) {
-        final Map<String, String> values = new LinkedHashMap<>();
-        for (final String key : bundle.keySet()) {
-            values.put(key, bundle.getString(key));
-        }
-        return new PropertiesLanguageFile(language, values);
+    public static LanguageFileFactory factory() {
+        return PropertiesLanguageFile::from;
     }
 
     private static Map<String, String> toMap(final Properties properties) {
