@@ -1,6 +1,6 @@
-package com.github.dinomarlir.l10nadventure.storage;
+package io.github.dinomarlir.l10nadventure.storage;
 
-import com.github.dinomarlir.l10nadventure.file.LanguageFile;
+import io.github.dinomarlir.l10nadventure.file.LanguageFile;
 
 import java.util.Optional;
 import java.util.Set;

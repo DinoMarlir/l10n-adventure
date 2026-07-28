@@ -1,8 +1,8 @@
-package com.github.dinomarlir.l10nadventure.storage;
+package io.github.dinomarlir.l10nadventure.storage;
 
-import com.github.dinomarlir.l10nadventure.file.LanguageFile;
-import com.github.dinomarlir.l10nadventure.file.LanguageFileFactory;
-import com.github.dinomarlir.l10nadventure.file.PropertiesLanguageFile;
+import io.github.dinomarlir.l10nadventure.file.LanguageFile;
+import io.github.dinomarlir.l10nadventure.file.LanguageFileFactory;
+import io.github.dinomarlir.l10nadventure.file.PropertiesLanguageFile;
 
 import java.io.InputStream;
 import java.net.JarURLConnection;

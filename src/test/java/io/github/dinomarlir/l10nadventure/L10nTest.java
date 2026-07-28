@@ -1,14 +1,14 @@
-package com.github.dinomarlir.l10nadventure;
+package io.github.dinomarlir.l10nadventure;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import com.github.dinomarlir.l10nadventure.file.LanguageFileFactories;
+import io.github.dinomarlir.l10nadventure.file.LanguageFileFactories;
 import java.util.Set;
 
-import com.github.dinomarlir.l10nadventure.file.LanguageFile;
-import com.github.dinomarlir.l10nadventure.file.PropertiesLanguageFile;
-import com.github.dinomarlir.l10nadventure.storage.ResourceBundleTranslationStorage;
-import com.github.dinomarlir.l10nadventure.storage.TranslationStorage;
+import io.github.dinomarlir.l10nadventure.file.LanguageFile;
+import io.github.dinomarlir.l10nadventure.file.PropertiesLanguageFile;
+import io.github.dinomarlir.l10nadventure.storage.ResourceBundleTranslationStorage;
+import io.github.dinomarlir.l10nadventure.storage.TranslationStorage;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.junit.jupiter.api.Test;

@@ -1,4 +1,4 @@
-package com.github.dinomarlir.l10nadventure;
+package io.github.dinomarlir.l10nadventure;
 
 import java.util.Arrays;
 import java.util.Map;
@@ -7,8 +7,8 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
-import com.github.dinomarlir.l10nadventure.file.LanguageFile;
-import com.github.dinomarlir.l10nadventure.storage.TranslationStorage;
+import io.github.dinomarlir.l10nadventure.file.LanguageFile;
+import io.github.dinomarlir.l10nadventure.storage.TranslationStorage;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import net.kyori.adventure.text.minimessage.tag.resolver.TagResolver;

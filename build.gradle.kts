@@ -4,7 +4,7 @@ plugins {
     id("maven-publish")
 }
 
-group = "com.github.dinomarlir"
+group = "io.github.dinomarlir"
 version = "1.0-SNAPSHOT"
 
 java {

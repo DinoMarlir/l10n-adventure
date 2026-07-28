@@ -14,10 +14,10 @@
 ## Usage
 
 ```java
-import com.github.dinomarlir.l10nadventure.Argument;
-import com.github.dinomarlir.l10nadventure.L10n;
-import com.github.dinomarlir.l10nadventure.storage.ResourceBundleTranslationStorage;
-import com.github.dinomarlir.l10nadventure.storage.TranslationStorage;
+import io.github.dinomarlir.l10nadventure.Argument;
+import io.github.dinomarlir.l10nadventure.L10n;
+import storage.io.github.dinomarlir.l10nadventure.ResourceBundleTranslationStorage;
+import storage.io.github.dinomarlir.l10nadventure.TranslationStorage;
 import net.kyori.adventure.text.Component;
 
 public final class Example {
@@ -50,10 +50,10 @@ public final class Example {
 import java.io.InputStream;
 import java.util.Map;
 import java.util.Properties;
-import com.github.dinomarlir.l10nadventure.file.LanguageFile;
-import com.github.dinomarlir.l10nadventure.file.LanguageFileFactories;
-import com.github.dinomarlir.l10nadventure.storage.ResourceBundleTranslationStorage;
-import com.github.dinomarlir.l10nadventure.storage.TranslationStorage;
+import file.io.github.dinomarlir.l10nadventure.LanguageFile;
+import file.io.github.dinomarlir.l10nadventure.LanguageFileFactories;
+import storage.io.github.dinomarlir.l10nadventure.ResourceBundleTranslationStorage;
+import storage.io.github.dinomarlir.l10nadventure.TranslationStorage;
 
 final class MyCustomLanguageFile implements LanguageFile {
   private final String language;

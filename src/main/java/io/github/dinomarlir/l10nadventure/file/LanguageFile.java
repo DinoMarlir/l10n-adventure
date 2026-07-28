@@ -1,6 +1,6 @@
-package com.github.dinomarlir.l10nadventure.file;
+package io.github.dinomarlir.l10nadventure.file;
 
-import com.github.dinomarlir.l10nadventure.L10n;
+import io.github.dinomarlir.l10nadventure.L10n;
 
 import java.util.Map;
 import java.util.Optional;

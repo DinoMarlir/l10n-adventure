@@ -1,11 +1,11 @@
-package com.github.dinomarlir.l10nadventure;
+package io.github.dinomarlir.l10nadventure;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.StringReader;
 
-import com.github.dinomarlir.l10nadventure.file.PropertiesLanguageFile;
+import io.github.dinomarlir.l10nadventure.file.PropertiesLanguageFile;
 import org.junit.jupiter.api.Test;
 
 class PropertiesLanguageFileTest {

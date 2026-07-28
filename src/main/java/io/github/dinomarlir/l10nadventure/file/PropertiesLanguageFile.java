@@ -1,4 +1,4 @@
-package com.github.dinomarlir.l10nadventure.file;
+package io.github.dinomarlir.l10nadventure.file;
 
 import java.io.IOException;
 import java.io.InputStream;

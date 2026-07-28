@@ -1,4 +1,4 @@
-package com.github.dinomarlir.l10nadventure;
+package io.github.dinomarlir.l10nadventure;
 
 import java.util.Objects;
 import net.kyori.adventure.text.ComponentLike;
