@@ -8,7 +8,7 @@ jobs:
         java: [21-jdk]
     runs-on: ubuntu-26.04
     container:
-      image: openjdk:${{ matrix.java }}
+      image: eclipse-temurin:21
       options: --user root
     steps:
       - name: 'Clone Repo'
